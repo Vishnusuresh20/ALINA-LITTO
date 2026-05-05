@@ -157,14 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // WhatsApp Phone Number: +91 89219 79752
         const phoneNumber = "918921979752";
         
-        // Set conditional message based on attendance
-        const responseEmoji = attend.includes("Accepted") ? "💖" : "😕";
-        const footerNote = attend.includes("Accepted") 
-            ? "*See you at the engagement! 😻🤍*" 
-            : "*Wishing you love and happiness on your special day 🤍*";
-
-        // Format the message
-        const message = `*✨ Engagement RSVP ✨*%0A────────────────────%0A%0A*Name*      : *${encodeURIComponent(name)}*%0A*Guests*    : *${encodeURIComponent(guests)}*%0A*Response*  : *${encodeURIComponent(attend)} ${responseEmoji}*%0A%0A${encodeURIComponent(footerNote)}`;
+        // Format the message based on attendance
+        let message = "";
+        if (attend.includes("Accepted")) {
+            message = `Engagement RSVP✨%0A%0AName: ${encodeURIComponent(name)}%0AGuests: ${encodeURIComponent(guests)}%0AStatus: Joyfully Accepted%0A%0ASee you at the engagement!😻🤍`;
+        } else {
+            message = `*✨ Engagement RSVP ✨*%0A────────────────────%0A%0A*${encodeURIComponent(name)}*%0Awith *${encodeURIComponent(guests)} Guest*%0A%0Aregretfully declines the invitation 😔%0A%0AWishing you love and happiness on your special day 🤍`;
+        }
 
         // Create WhatsApp URL
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
