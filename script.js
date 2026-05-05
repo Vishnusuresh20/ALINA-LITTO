@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phoneNumber = "918921979752";
         
         // Format the message
-        const message = `Engagement RSVP%0A----------------------%0A*Name:* ${encodeURIComponent(name)}%0A*Guests:* ${encodeURIComponent(guests)}%0A*Status:* ${encodeURIComponent(attend)}%0A----------------------%0ASee you at the engagement!`;
+        const message = `*✨ Engagement RSVP ✨*%0A────────────────────%0A%0A*Name*      : *${encodeURIComponent(name)}*%0A*Guests*    : *${encodeURIComponent(guests)}*%0A*Response*  : *${encodeURIComponent(attend)} 💖*%0A%0A*See you at the engagement! 😻🤍*`;
 
         // Create WhatsApp URL
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
