@@ -157,8 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // WhatsApp Phone Number: +91 89219 79752
         const phoneNumber = "918921979752";
         
+        // Set conditional message based on attendance
+        const responseEmoji = attend.includes("Accepted") ? "💖" : "😕";
+        const footerNote = attend.includes("Accepted") 
+            ? "*See you at the engagement! 😻🤍*" 
+            : "*Wishing you love and happiness on your special day 🤍*";
+
         // Format the message
-        const message = `*✨ Engagement RSVP ✨*%0A────────────────────%0A%0A*Name*      : *${encodeURIComponent(name)}*%0A*Guests*    : *${encodeURIComponent(guests)}*%0A*Response*  : *${encodeURIComponent(attend)} 💖*%0A%0A*See you at the engagement! 😻🤍*`;
+        const message = `*✨ Engagement RSVP ✨*%0A────────────────────%0A%0A*Name*      : *${encodeURIComponent(name)}*%0A*Guests*    : *${encodeURIComponent(guests)}*%0A*Response*  : *${encodeURIComponent(attend)} ${responseEmoji}*%0A%0A${encodeURIComponent(footerNote)}`;
 
         // Create WhatsApp URL
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
