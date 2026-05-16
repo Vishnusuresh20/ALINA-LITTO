@@ -748,18 +748,30 @@ ul {
 
 /* --- SAVE THE DATE --- */
 .save-the-date {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    clip-path: inset(0); /* Essential to contain the fixed child */
+}
+
+.save-the-date::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('images/pic.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Parallax effect */
-    text-align: center;
-    color: #fff;
+    z-index: -2; /* Behind the overlay */
 }
 
 .save-the-date .overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(1, 50, 32, 0.4); /* Reduced opacity for better image visibility */
+    background-color: rgba(1, 50, 32, 0.4); 
+    z-index: -1;
 }
 
 .save-the-date h2 {
@@ -1134,8 +1146,7 @@ footer h2 {
     footer h2 { font-size: 2.2rem; }
 
     .save-the-date {
-        background-attachment: scroll !important;
-        background-position: center center;
+        background-attachment: scroll; /* Reset for safety, though pseudo-element takes over */
     }
 }
 
